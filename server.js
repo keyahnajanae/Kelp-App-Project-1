@@ -6,6 +6,24 @@ const app = express();
 const PORT = 4000;
 
 
+//Middleware
+
+
+
+
+//Routes 
+
+//index route
+app.get("/", function(req, res) {
+    res.render("index.ejs")
+})
+
+//new route
+app.get("/new", function(req, res) {
+    res.render("new.ejs")
+})
+
+
 
 
 //server listener
