@@ -23,4 +23,5 @@ mongoose.connection.on('error', (err) => {
 
 module.exports = {
     Restaurant: require('./Restaurant.js'),
+    Review: require('./Review.js')
 }
