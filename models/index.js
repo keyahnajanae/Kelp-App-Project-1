@@ -13,8 +13,8 @@ mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${connectionString}`);
 })
 
-mongoose.connection.on('disconnected', () => {
-    console.log('Mongoose is disconnected');
+mongoose.connection.on('disconnected', (event) => {
+    console.log('Mongoose is disconnected', event);
 })
 
 mongoose.connection.on('error', (err) => {

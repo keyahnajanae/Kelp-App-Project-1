@@ -6,9 +6,12 @@ const app = express();
 const PORT = 4000;
 // Internal modules
 const db = require("./models");
+app.set("view engine", "ejs")
 
+const controllers = require("./controllers")
 
 //Middleware
+app.use(express.urlencoded({ extended: true }));
 
 
 
@@ -20,11 +23,11 @@ app.get("/", function(req, res) {
     res.render("index.ejs")
 })
 
-//new route
-app.get("/new", function(req, res) {
-    res.render("new.ejs")
-})
 
+
+
+//Restaurant route
+app.use("/restaurants", controllers.restaurant)
 
 
 
