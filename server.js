@@ -4,10 +4,16 @@ const express = require("express");
 const app = express();
 // configuration
 const PORT = 4000;
+// Internal modules
+const db = require("./models");
 
 
 //Middleware
-
+app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.originalUrl}`);
+    next();
+});
 
 
 
