@@ -9,15 +9,11 @@ const db = require("./models");
 
 
 //Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.originalUrl}`);
-    next();
-});
 
 
 
-//Routes 
+
+//Routes
 
 //index route
 app.get("/", function(req, res) {
@@ -28,6 +24,8 @@ app.get("/", function(req, res) {
 app.get("/new", function(req, res) {
     res.render("new.ejs")
 })
+
+
 
 
 
