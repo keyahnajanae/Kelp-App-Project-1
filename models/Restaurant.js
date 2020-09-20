@@ -9,6 +9,12 @@ const restaurantSchema = new mongoose.Schema(
         delivery: Boolean,
         takeOut: Boolean,
         dineIn: Boolean,
+        review: [
+            { 
+                type: mongoose.Schema.ObjectId,
+                ref: "Review",
+            }
+        ],
     }
 );
 

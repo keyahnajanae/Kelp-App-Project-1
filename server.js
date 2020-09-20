@@ -4,10 +4,10 @@ const express = require("express");
 const app = express();
 // configuration
 const PORT = 4000;
+// Internal modules
+const db = require("./models");
 app.set("view engine", "ejs")
 
-//Internal module
-const db = require("./models");
 const controllers = require("./controllers")
 
 //Middleware
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-//Routes 
+//Routes
 
 //index route
 app.get("/", function(req, res) {
@@ -28,6 +28,8 @@ app.get("/", function(req, res) {
 
 //Restaurant route
 app.use("/restaurants", controllers.restaurant)
+
+
 
 
 

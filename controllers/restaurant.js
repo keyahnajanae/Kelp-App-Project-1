@@ -27,9 +27,47 @@ router.get("/new", (req, res) => {
 })
 
 
-//create route
+//create route - TODO add images and connection to reviews
+router.post('/', (req, res)=>{
+    if(req.body.delivery === 'on') {
+        req.body.delivery = true;
+    } else {
+        req.body.delivery = false;
+    }
+    if(req.body.takeOut === 'on') {
+        req.body.takeOut = true;
+    } else {
+        req.body.takeOut = false;
+    }
+    if(req.body.dineIn === 'on') {
+        req.body.dineIn = true;
+    } else {
+        req.body.dineIn = false;
+    }
+    db.Restaurant.create(req.body, (error, createdRestaurant)=>{
+        console.log(req.body)
+        if (createdRestaurant) {
+            return res.send({message: "Restaurant already exists"})
+        } // TODO make functionality to not let restaurants be duplicated to db
+        res.redirect('/restaurants'); 
+    });
+});
+
 
 // show route
+router.get("/:id", (req, res) => {
+    db.Restaurant.findById(req.params.id, (error, foundRestaurant) => {
+        if (error) {
+          console.log(error);
+          return res.send(error);
+        }
+    const context = {
+        restaurant: foundRestaurant
+    };
+    res.render("restaurant/show", context)
+    });
+});
+
 
 //edit route
 router.get("/:id/edit", async (req, res) =>{
