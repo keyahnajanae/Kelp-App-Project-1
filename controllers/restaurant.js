@@ -46,7 +46,7 @@ router.post('/', (req, res)=>{
     }
     db.Restaurant.create(req.body, (error, createdRestaurant)=>{
         console.log(req.body)
-        if (createdRestaurant) {
+        if (!createdRestaurant) {
             return res.send({message: "Restaurant already exists"})
         } // TODO make functionality to not let restaurants be duplicated to db
         res.redirect('/restaurants'); 
@@ -72,9 +72,9 @@ router.get("/:id", (req, res) => {
 //edit route
 router.get("/:id/edit", async (req, res) =>{
     try {
-        const editRestaurants = await db.Restaurant.findById(req.params.id)
+        const foundRestaurant = await db.Restaurant.findById(req.params.id)
         const context = {
-            restaurants: editRestaurants,
+            restaurant: foundRestaurant,
         }
         res.render("restaurant/edit", context)
     } catch (error) {
@@ -87,17 +87,23 @@ router.get("/:id/edit", async (req, res) =>{
 //update
 
 router.put("/:id", async (req, res) =>{
-    try {
-        const updatedRestaurant = await db.Restaurant.findByIdAndUpdate(req.params.id, req.body, {new:true})
+  try {
+        const updatedRestaurant = await db.Restaurant.findByIdAndUpdate(req.params.id, req.body, {new: true})
         res.redirect(`/restaurants/${updatedRestaurant._id}`)
     } catch (error) {
         console.log(error);
-        return res.send(error);
+        return res.send({message:"Internal Service Error"});
     }
-})
+}) 
 
 //delete
-
-
-
+router.delete("/:id", async (req, res) => {
+    try {
+         await db.Restaurant.findByIdAndDelete(req.params.id) 
+         res.redirect("/restaurants");
+    } catch (error) {
+        console.log(error);
+        return res.send({message:"Internal Service Error"});
+    }
+});
 module.exports = router;
