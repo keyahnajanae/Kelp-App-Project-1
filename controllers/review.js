@@ -7,7 +7,7 @@ const db = require("../models")
 
 /* Base Routes */
 
-//Initial Route
+//Index Route
 
 router.get("/", async (req, res) => {
     try {
