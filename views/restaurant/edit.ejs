@@ -9,10 +9,17 @@
 
     <h1>Edit <%= restaurant.name %> </h1>
    <form action="/restaurants/<%= restaurant._id %>?_method=PUT" method="POST">
-      Name: <input type="text" name="name" placeholder="<%= restaurant.name %> " /><br>
-      Location: <input type="text" name="location" placeholder="<%= restaurant.location %> "/><br>
-    <input type="submit" value="Update Restaurant Info" />
-    </form> 
+        <p>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value="<%= restaurant.name %> "
+          />
+        </p>
+
+        <input type="submit" value="Update Restaurant Name "/>
+      </form> 
 
 </body>
 </html> 
