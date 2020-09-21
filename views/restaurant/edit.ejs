@@ -8,7 +8,7 @@
 <body>
 
     <h1>Edit <%= restaurant.name %> </h1>
-   <form action="/restaurants/ <%= restaurant._id %>?_method=PUT" method="POST">
+   <form action="/restaurants/<%= restaurant._id %>?_method=PUT" method="POST">
         <p>
           <input
             type="text"
