@@ -15,15 +15,15 @@
                 <input type="text" name="author" placeholder="Your Name" >
             </p>
             <p>
-                <textarea type="text" name="review" placeholder="Your review here">
+                <textarea type="text" name="review" placeholder="Your review here"></textarea>
             </p>
             <p>
-                <select name="restaurant">
+              <select name="restaurant">
                     <option default>Select Restaurant</option>
-                    <%= restaurants.forEach(restaurant => { %>
+                    <% restaurants.forEach(restaurant => { %>
                         <option value="<%= restaurant._id %>"><%= restaurant.name %></option>
                     <% }) %> 
-                </select>
+                </select> 
             </p>
             <input type="submit" value="Submit Review">
         </form>
