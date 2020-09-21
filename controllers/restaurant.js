@@ -1,5 +1,5 @@
 const express = require("express");
-//const { restaurant } = require(".");
+const { restaurant } = require(".");
 const router = express.Router();
 
 const db = require("../models");
@@ -56,7 +56,9 @@ router.post('/', (req, res)=>{
 
 // show route
 router.get("/:id", (req, res) => {
-    db.Restaurant.findById(req.params.id, (error, foundRestaurant) => {
+    db.Restaurant.findById(req.params.id)
+        .populate("review")
+        .exec((error, foundRestaurant) => {
         if (error) {
           console.log(error);
           return res.send(error);

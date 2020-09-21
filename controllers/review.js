@@ -1,5 +1,5 @@
 const express = require("express")
-const { review } = require(".")
+//const { review } = require(".")
 const router = express.Router();
 
 const db = require("../models")
@@ -37,6 +37,7 @@ router.get("/new", (req, res) => {
 
 //Create Route
 router.post("/", async (req, res) =>{
+    console.log(req.body)
     try {
         if(req.body.recommend === "on"){
             req.body.recommend = true
