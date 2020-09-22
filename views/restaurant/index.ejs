@@ -9,11 +9,18 @@
     <main>
     <h1>All Restaurants</h1>
     <a href="/">Home</a>
+<<<<<<< HEAD
+    <a href="/restaurants/new">Add A New Restaurant</a>
+    <a href="/reviews/new">Leave A Review</a>
+=======
     <a href="/reviews/new">Write a Review</a>
+>>>>>>> development
     <ul>
         <% restaurants.forEach(restaurant => { %>
 <li>
-    <a href="/restaurants/<%= restaurant._id %> "><%= restaurant.name %> </a>
+    <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %> </a>
+
+        
     
 </li>
 

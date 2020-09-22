@@ -13,7 +13,8 @@ router.get("/", async (req, res) => {
     try {
         const foundReview = await db.Review.find({});
         const context = {
-            review: foundReview
+            review: foundReview,
+
         }
         res.render("review/index", context)
     } catch (error) {
