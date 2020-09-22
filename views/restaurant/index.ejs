@@ -19,9 +19,9 @@
         <% restaurants.forEach(restaurant => { %>
 <li>
     <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %> </a>
-
-        
-    
+</li>
+<li>
+    <a href="/restaurants/<%= restaurant._id %>/newreview">Write a review</a>
 </li>
 
       <%  }) %> 

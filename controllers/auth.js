@@ -45,7 +45,7 @@ router.get("/login", (req, res) => {
 });
 //login post <--- authentification
 
-router.post("./login", async (req, res) => {
+router.post("/login", async (req, res) => {
     try {
         // check if user exists via email
         const foundUser = await db.User.findOne({email: req.body.email});
