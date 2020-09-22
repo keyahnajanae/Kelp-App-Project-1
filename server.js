@@ -12,6 +12,7 @@ app.set("view engine", "ejs")
 
 const controllers = require("./controllers")
 
+
 //Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -31,7 +32,7 @@ app.get("/", function(req, res) {
 //Restaurant route
 app.use("/restaurants", controllers.restaurant)
 
-
+app.use("/reviews", controllers.review)
 
 
 
