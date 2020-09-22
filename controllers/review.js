@@ -50,13 +50,27 @@ router.post("/", async (req, res) =>{
         foundRestaurant.review.push(createdReview);
         await foundRestaurant.save();
     
-        res.redirect("/reviews");
+        res.redirect("/restaurants");
       } catch (error) {
         console.log(error);
         res.send({ message: "Internal server error" });
       }
 })
 
+
+// Specific restaurant new review route
+router.get("/:id/new", (req,res) => {
+    db.Restaurant.findById(req.params.id, (error, foundRestaurant) => {
+        if (error) {
+            console.log(error);
+            return res.send(error);
+          }
+        const context = {
+            restaurant: foundRestaurant
+        };
+        res.render("review/idnew", context)
+    });
+});
 
 //Show Route ?
 router.get("/:id", (req, res) => {
