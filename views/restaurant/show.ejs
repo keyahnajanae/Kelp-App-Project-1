@@ -16,6 +16,17 @@
     <input type="submit" value="Delete" />
     </form>
     
+    <section>
+        <h2>Reviews</h2>
+        <ul>
+            <% restaurant.review.forEach(review => { %>
+            <li><%= review.author %> </li>
+            <span><%= review.review %></span>
+        <% }) %> 
+        </ul>
+    
+
+    </section>
 
 </body>
 </html>

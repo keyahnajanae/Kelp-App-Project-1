@@ -1,5 +1,5 @@
 const express = require("express")
-const { review } = require(".")
+//const { review } = require(".")
 const router = express.Router();
 
 const db = require("../models")
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
         const context = {
             review: foundReview
         }
-        res.render("review/index")
+        res.render("review/index", context)
     } catch (error) {
         console.log(error)
         res.send({message: "Error"})
@@ -23,23 +23,41 @@ router.get("/", async (req, res) => {
 })
 
 //New Route
-router.get("/new", (req, res) =>
-{
-    res.render("review/new")
+router.get("/new", (req, res) => {
+    db.Restaurant.find({}, function (error, foundRestaurants) {
+        if (error) return res.send(error);
+
+        const context = {
+            restaurants: foundRestaurants,
+        };
+
+        res.render("review/new", context)
+    })
 })
 
 //Create Route
-router.post("/", (req, res) =>{
-    if(req.body.recommend === "on"){
-        req.body.recommend = true
-    } else {
-        req.body.recommend = false;
-    }
-db.Review.create(req.body, (error, createdReview) => {
+router.post("/", async (req, res) =>{
     console.log(req.body)
+    try {
+        if(req.body.recommend === "on"){
+            req.body.recommend = true
+        } else {
+            req.body.recommend = false;
+        }
+        const createdReview = await db.Review.create(req.body);
+        const foundRestaurant = await db.Restaurant.findById(req.body.restaurant);
+    
+        foundRestaurant.review.push(createdReview);
+        await foundRestaurant.save();
+    
+        res.redirect("/reviews");
+      } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+      }
 })
-res.redirect('/restaurants/show'); 
-})
+
+
 //Show Route ?
 router.get("/:id", (req, res) => {
     db.Review.findById(req.params.id, (error, foundReview) => {
