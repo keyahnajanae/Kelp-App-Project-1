@@ -9,7 +9,7 @@
     <a href="/restaurants">Back</a>
     <h1><%= restaurant.name %></h1>    
     <h3><%= restaurant.location %></h3>
-    
+    <a href="/restaurants/<%= restaurant._id %>/newreview">Write a Review</a>
     <a href="/restaurants/<%= restaurant._id %>/edit">Edit</a>
 
     <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
@@ -17,7 +17,6 @@
     </form>
     
     <section>
-        <a href="/reviews/new/<%= %> ">Write A Review</a>
         <h2>Reviews</h2>
         <ul>
             <% restaurant.review.forEach(review => { %>
@@ -25,8 +24,6 @@
             <p><%= review.review %></p>
         <% }) %> 
         </ul>
-    
-
     </section>
 
 </body>
