@@ -1,6 +1,8 @@
 // External modules
 const express = require("express");
 const methodOverride = require("method-override");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session)
 
 // Instanced modules
 const app = express();
@@ -16,24 +18,41 @@ const controllers = require("./controllers")
 //Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-
+app.use(session({
+    resave: false,
+    saveUninitialized: false,
+    secret: "Rainbows",
+    store: new MongoStore({
+        url:"mongodb://localhost:27017/restaurant-session",
+    }),
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}))
+const authRequired = (req, res, next) => {
+    if(!req.session.currentUser){
+        return res.redirect("/login")
+    }
+    next();
+}
 
 
 //Routes
 
 //index route
 app.get("/", function(req, res) {
-    res.render("index.ejs")
+    res.render("index.ejs", {user: req.session.currentUser })
 })
 
 
 
 
-//Restaurant route
+//Controller routes
 app.use("/restaurants", controllers.restaurant)
 
 app.use("/reviews", controllers.review)
 
+app.use("/", controllers.auth)
 
 
 //server listener

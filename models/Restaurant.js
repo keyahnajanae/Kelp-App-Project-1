@@ -9,7 +9,7 @@ const restaurantSchema = new mongoose.Schema(
         delivery: Boolean,
         takeOut: Boolean,
         dineIn: Boolean,
-         review: [
+        review: [
             { 
                 type: mongoose.Schema.ObjectId,
                 ref: "Review",
