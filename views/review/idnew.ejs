@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New review</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Write New Review</h1>
-    <a href="/restaurants">Restaurants</a>
-    <a href="/">Home</a>
-
+    <h1>Write review for this restaurant</h1>
     <main>
-        <form action="/reviews" method="POST">
+        <form action="/restaurants/<%= restaurant._id %> " method="POST">
             <p>
                 <input type="text" name="author" placeholder="Your Name" >
             </p>
@@ -19,12 +16,7 @@
                 <textarea type="text" name="review" placeholder="Your review here"></textarea>
             </p>
             <p>
-              <select name="restaurant">
-                    <option default>Select Restaurant</option>
-                    <% restaurants.forEach(restaurant => { %>
-                        <option value="<%= restaurant._id %>"><%= restaurant.name %></option>
-                    <% }) %> 
-                </select> 
+            
             </p>
             <input type="submit" value="Submit Review">
         </form>

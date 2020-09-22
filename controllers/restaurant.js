@@ -71,6 +71,45 @@ router.get("/:id", (req, res) => {
 });
 
 
+// Specific restaurant new review route
+router.get("/:id/newreview", (req,res) => {
+    db.Restaurant.findById(req.params.id, (error, foundRestaurant) => {
+        if (error) {
+            console.log(error);
+            return res.send(error);
+          }
+        const context = {
+            restaurant: foundRestaurant
+        };
+        res.render("review/idnew", context)
+    });
+});
+
+// Create route for specific restaurant review
+router.post("/:id", async (req, res) =>{
+    console.log(req.body)
+    try {
+        /* if(req.body.recommend === "on"){
+            req.body.recommend = true
+        } else {
+            req.body.recommend = false;
+        } */
+        req.body.restaurant = req.params.id
+        const createdReview = await db.Review.create(req.body);
+        const foundRestaurant = await db.Restaurant.findById(req.body.restaurant);
+    
+        foundRestaurant.review.push(createdReview);
+        await foundRestaurant.save();
+    
+        res.redirect("/restaurants");
+      } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal server error" });
+      }
+})
+
+
+
 //edit route
 router.get("/:id/edit", async (req, res) =>{
     try {
