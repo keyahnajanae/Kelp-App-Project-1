@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
         req.body.password = hash;
         // create a user and redirect 
         await db.User.create(req.body)
-        res.redirect("/login")
+        res.redirect("/")
     } catch (error) {
         res.send({message: "Internal Error"})
         console.log(error)

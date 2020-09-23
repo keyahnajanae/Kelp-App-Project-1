@@ -3,16 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Register</title>
 </head>
 <body>
-   <h1> Register for a Kelp Account</h1> 
-   <form action="/register" method="POST">
-<input type="text" name="username" placeholder="Username" required />
-<br> <input type="email" name="email" placeholder="Email" required />
-<br> <input type="password" name="password" placeholder="Password" required>
-<br>
-<input type="submit" value="Register">
+   <h1 class ="register-kelp"> Register for a Kelp Account</h1> 
+
+   <div class="row">
+   <form class="col s12" action="/register" method="POST">
+    <div class="row">
+        <div class="input-field inline col s6">
+            
+<input type="text" name="username" class="validate" required />
+<label class="active" for="username"> Username</label>
+</div>
+<div class="input-field inline col s6">
+   
+ <input type="email" name="email" class="validate" required />
+ <label class="active" for="email">Email</label>
+</div>
+</div>
+<div class="row">
+    <div class="input-field inline col s6">
+        <input type="password" name="password"  class="validate" required>
+        <label class="active" for="password">Password</label>
+        </div>
+    </div>
+<input class="waves-effect waves-light btn" type="submit" value="Register">
 </form>
+</div>
+</div>
+
+
 </body>
 </html>
