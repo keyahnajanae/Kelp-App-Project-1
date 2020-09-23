@@ -1,5 +1,5 @@
 const express = require("express")
-//const { review } = require(".")
+const { review } = require(".")
 const router = express.Router();
 
 const db = require("../models")
@@ -13,8 +13,7 @@ router.get("/", async (req, res) => {
     try {
         const foundReview = await db.Review.find({});
         const context = {
-            review: foundReview,
-
+            review: foundReview
         }
         res.render("review/index", context)
     } catch (error) {
@@ -58,20 +57,6 @@ router.post("/", async (req, res) =>{
       }
 })
 
-
-// Specific restaurant new review route
-router.get("/:id/new", (req,res) => {
-    db.Restaurant.findById(req.params.id, (error, foundRestaurant) => {
-        if (error) {
-            console.log(error);
-            return res.send(error);
-          }
-        const context = {
-            restaurant: foundRestaurant
-        };
-        res.render("review/idnew", context)
-    });
-});
 
 //Show Route ?
 router.get("/:id", (req, res) => {

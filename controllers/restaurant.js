@@ -8,16 +8,16 @@ const db = require("../models");
 
 //All restaurant page
 router.get("/", async (req, res) => {
-try {
-    const foundRestaurants = await db.Restaurant.find({});
-    const context = {
-        restaurants: foundRestaurants,
+    try {
+        const foundRestaurants = await db.Restaurant.find({});
+        const context = {
+            restaurants: foundRestaurants,
+        }
+        res.render("restaurant/index", context)
+    } catch (error) {
+        console.log(error)
+        res.send({message: "Internal Error"})
     }
-    res.render("restaurant/index", context)
-} catch (error) {
-    console.log(error)
-    res.send({message: "Internal Error"})
-}
 })
 
 
@@ -45,10 +45,11 @@ router.post('/', (req, res)=>{
         req.body.dineIn = false;
     }
     db.Restaurant.create(req.body, (error, createdRestaurant)=>{
-        console.log(req.body)
+        //console.log(req.body)
         if (!createdRestaurant) {
             return res.send({message: "Restaurant already exists"})
         } // TODO make functionality to not let restaurants be duplicated to db
+        console.log(createdRestaurant)
         res.redirect('/restaurants'); 
     });
 });
@@ -87,7 +88,7 @@ router.get("/:id/newreview", (req,res) => {
 
 // Create route for specific restaurant review
 router.post("/:id", async (req, res) =>{
-    console.log(req.body)
+    //console.log(req.body)
     try {
         /* if(req.body.recommend === "on"){
             req.body.recommend = true
@@ -112,12 +113,16 @@ router.post("/:id", async (req, res) =>{
 
 //edit route
 router.get("/:id/edit", async (req, res) =>{
+    //console.log(req.body.username)
     try {
+        //console.log(req.body._id)
         const foundRestaurant = await db.Restaurant.findById(req.params.id)
         const context = {
             restaurant: foundRestaurant,
         }
         res.render("restaurant/edit", context)
+        //console.log(req.session.currentUser.id)
+        //console.log(foundRestaurant)
     } catch (error) {
         res.send({message:"Internal Service Error"})
         console.log(error)

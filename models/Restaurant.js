@@ -11,10 +11,15 @@ const restaurantSchema = new mongoose.Schema(
         dineIn: Boolean,
         review: [
             { 
-                type: mongoose.Schema.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 ref: "Review",
             }
         ],
+        user:
+            { 
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User",
+            }
     }
 );
 
