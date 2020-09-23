@@ -3,23 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>New Restaurant</title>
 </head>
 <body>
-    <h1>New Restaurant</h1>
-    <a href="/">Home</a>
-    <a href="/restaurants">Restaurants</a>
 
 
-    <form action="/restaurants" method="POST">
-        Name: <input type="text" name="name" /><br>
-        Location: <input type="text" name="location" /><br>
-        Business Hours: <input type="textbox" name="businessHours" /><br>
-        Does this restaurant deliver?: <input type="checkbox" name="delivery" /><br>
-        Does this restaurant do takeout?: <input type="checkbox" name="takeOut" /><br>
-        Does this restaurant have dine in option?: <input type="checkbox" name="dineIn" /><br>
-        <input type="submit" value="New Restaurant" />
+    <section class="hero is-primary is-medium">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+          <nav class="navbar">
+            <div class="container">
+              <div class="navbar-brand">
+                <a href="/" class="navbar-item">
+                  <img src="https://uploads-ssl.webflow.com/5be7bc39ea60003da6a932e0/5be8c37ac9fc1ff7e3038120_kelp%20logo.png" alt="Logo">
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+              <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-end">
+                  <a class="navbar-item is-active" href="/restaurants">
+                    All Restaurants
+                  </a>
+                  <a class="navbar-item" href="/reviews/new">Write A Review
+                  </a>
+                  <a class="navbar-item" href="/restaurants/new">Add a Restaurant
+                 
+                  </a>
+
+                  <!-- Nav bar for login  -->
+                  
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      
+        <h1 class="new-restaurant">New Restaurant</h1>
+        <div class="row">
+          
+    <form class="col s12" action="/restaurants" method="POST">
+        <div class="input-field inline col s6">
+        <input class="validate" type="text" name="name" />
+        <label class="active" for="name">Name</label>
+    </div>
+    <div class="input-field inline col s6">
+        <input class="validate" type="text" name="location" />
+        <label class="active" for="location">Location</label>
+        </div>
+        <div class="input-field inline col s6">
+      <input class="validate" type="text" name="businessHours" />
+        <label class="active" for="businessHours">Business Hours</label>
+    </div>
+    <div class="input-field inline col s6">
+       
+        <label id="delivery-checkbox">
+            <input class="validate" type="checkbox" name="delivery" id="delivery-checkbox" type="checkbox" />
+            <span>Delivery Options? </span>
+          </label>
+    </div>
+        <div class="input-field inline col s6">
+        <label id="takeout-checkbox">
+            <input class="validate" type="checkbox" name="takeOut" id="takeout-checkbox" type="checkbox" />
+            <span>Take Out Options? </span>
+          </label>
+    </div>
+        <div class="input-field inline col s6">
+         
+    <label id="dinein-checkbox">
+        <input class="validate" type="checkbox" name="dineIn" id="dinein-checkbox" type="checkbox" />
+        <span>Dine In Option? </span>
+      </label>
+
+    </div>
+  
+
+        <input class="waves-effect waves-light btn" type="submit" value="New Restaurant" />
+       
     </form>
-
+</div>
 </body>
 </html>
