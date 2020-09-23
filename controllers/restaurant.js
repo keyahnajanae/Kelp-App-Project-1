@@ -138,9 +138,23 @@ router.get("/:id/edit", async (req, res) =>{
 
 router.put("/:id", async (req, res) =>{
     //console.log(req.session.currentUser.id)
+    if(req.body.delivery === 'on') {
+        req.body.delivery = true;
+    } else {
+        req.body.delivery = false;
+    }
+    if(req.body.takeOut === 'on') {
+        req.body.takeOut = true;
+    } else {
+        req.body.takeOut = false;
+    }
+    if(req.body.dineIn === 'on') {
+        req.body.dineIn = true;
+    } else {
+        req.body.dineIn = false;
+    }
     try {
         const updatedRestaurant = await db.Restaurant.findByIdAndUpdate(req.params.id, req.body, {new: true})
-        
         console.log(req.body)
         res.redirect(`/restaurants/${updatedRestaurant._id}`)
     } catch (error) {
