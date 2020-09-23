@@ -1,0 +1,22 @@
+body {
+    background-color: whitesmoke;
+    
+}
+
+.center-kelp-home-button {
+    text-align: center;
+}
+
+
+.header-nav_item {
+    list-style-type: none;
+    display: inline-block;
+  
+   
+}
+
+.login-header-nav {
+    text-align: right;
+    
+   
+}

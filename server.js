@@ -3,6 +3,7 @@ const express = require("express");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session)
+const path = require("path");
 
 // Instanced modules
 const app = express();
@@ -12,11 +13,13 @@ const PORT = 4000;
 const db = require("./models");
 app.set("view engine", "ejs")
 
-const controllers = require("./controllers")
+const controllers = require("./controllers");
+const { restaurant } = require("./controllers");
 
 
 //Middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride("_method"));
 app.use(session({
     resave: false,
