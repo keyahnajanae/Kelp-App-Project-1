@@ -3,6 +3,9 @@ const { restaurant } = require(".");
 const router = express.Router();
 
 const db = require("../models");
+//const { User } = require("../models");
+
+//this controller 
 
 //base routes
 
@@ -44,8 +47,9 @@ router.post('/', (req, res)=>{
     } else {
         req.body.dineIn = false;
     }
+    req.body.user = req.session.currentUser.id //adds current user id to user field in created restaurant
+    console.log(req.body)
     db.Restaurant.create(req.body, (error, createdRestaurant)=>{
-        console.log(req.body)
         if (!createdRestaurant) {
             return res.send({message: "Restaurant already exists"})
         } // TODO make functionality to not let restaurants be duplicated to db
@@ -117,7 +121,12 @@ router.get("/:id/edit", async (req, res) =>{
         const context = {
             restaurant: foundRestaurant,
         }
-        res.render("restaurant/edit", context)
+        console.log(foundRestaurant.user)
+        if (foundRestaurant.user == req.session.currentUser.id) {
+            res.render("restaurant/edit", context)
+        } else {
+            res.send({message: "You are not authorized to edit this restaurant"})
+        } 
     } catch (error) {
         res.send({message:"Internal Service Error"})
         console.log(error)
@@ -128,8 +137,11 @@ router.get("/:id/edit", async (req, res) =>{
 //update route
 
 router.put("/:id", async (req, res) =>{
-  try {
+    //console.log(req.session.currentUser.id)
+    try {
         const updatedRestaurant = await db.Restaurant.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        
+        console.log(req.body)
         res.redirect(`/restaurants/${updatedRestaurant._id}`)
     } catch (error) {
         console.log(error);
