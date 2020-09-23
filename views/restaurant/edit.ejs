@@ -14,16 +14,18 @@
 
    <form action="/restaurants/<%= restaurant._id %>?_method=PUT" method="POST">
         <p>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value="<%= restaurant.name %> "
-          />
+          <input type="text" name="name" placeholder="Name" value="<%= restaurant.name %>"/>
+          Location: <input type="text" name="location" placeholder="Location" value="<%= restaurant.location %>"/><br>
+          Does this restaurant deliver?: <input type="checkbox" name="delivery" /><br>
+          Does this restaurant do takeout?: <input type="checkbox" name="takeOut" /><br>
+          Does this restaurant have dine in option?: <input type="checkbox" name="dineIn" /><br>
         </p>
 
         <input type="submit" value="Update Restaurant Name "/>
       </form> 
+      <form action="/restaurants/<%= restaurant._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete" />
+        </form>
 
 </body>
 </html> 
