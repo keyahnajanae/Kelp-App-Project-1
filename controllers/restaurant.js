@@ -92,6 +92,7 @@ router.get("/:id/newreview", (req,res) => {
 // Create route for specific restaurant review
 router.post("/:id", async (req, res) =>{
     console.log(req.body)
+    
     try {
         if(req.body.recommend === "on"){
             req.body.recommend = true
