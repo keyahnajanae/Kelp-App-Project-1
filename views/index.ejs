@@ -92,13 +92,13 @@
           </nav>
         </div>
       </section>
-
+      <% restaurants.forEach(restaurant => { %>
       <div class="row">
         <div class="col s8 m4">
           <div class="card">
-            <div class="card-image">
-              <img src="https://media.istockphoto.com/photos/close-up-of-fresh-flame-grilled-burgers-displayed-in-a-row-at-food-picture-id914886270?k=6&m=914886270&s=612x612&w=0&h=4gUa15EQ1pIxUqJDg0A8z5do1pDpHeETfm8GvaxjDF4=">
-              <span class="card-title">Restaurant Name</span>
+            <div class="card-image"> <!--  TODO change image src to restaurant.image -->
+              <img src= "<%= restaurant.image %> >"
+              <span class="card-title"><%= restaurant.name %></span>
               <a class="btn turqoise"><i class="material-icons">Write A Review</i></a>
           </div>
             <div class="card-content">
@@ -106,6 +106,7 @@
             </div>
           </div>
       </div>
+      <%  }) %> 
     <section class="second-restaruant">    
         <div class="col s8 m4">
           <div class="card">
@@ -136,13 +137,23 @@
       >
   
     </section>
-
+    
   
 </div>
     </div>
   </div>
 </div>
+        <ul>
+        <% restaurants.forEach(restaurant => { %>
+<li>
+    <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %> </a>
+</li>
+<li>
+    <a href="/restaurants/<%= restaurant._id %>/newreview">Write a review</a>
+</li>
 
+      <%  }) %> 
+    </ul>
 
 <!-- Add a footer -->
 </body>
