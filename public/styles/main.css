@@ -28,11 +28,11 @@ body {
 
 /* label color */
 .input-field label {
-  color: #000;
+  color: whitesmoke;
 }
 /* label focus color */
-.input-field input[type=text]:focus + label {
-  color: #000;
+.input-field {
+  color:whitesmoke;
 }
 /* label underline focus color */
 .input-field input[type=text]:focus {
@@ -45,11 +45,14 @@ body {
   box-shadow: 0 1px 0 0 #000;
 }
 /* invalid color */
-.input-field input[type=text].invalid {
+.input-field input[type=checkbox].invalid {
   border-bottom: 1px solid #000;
   box-shadow: 0 1px 0 0 #000;
+  color: white;
 }
 /* icon prefix focus color */
 .input-field .prefix.active {
   color: #000;
 }
+
+
