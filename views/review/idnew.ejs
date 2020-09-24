@@ -9,20 +9,59 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Write review for this restaurant</h1>
+    <section class="hero is-primary is-medium">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+          <nav class="navbar">
+            <div class="container">
+              <div class="navbar-brand">
+                <a href="/" class="navbar-item">
+                  <img src="https://uploads-ssl.webflow.com/5be7bc39ea60003da6a932e0/5be8c37ac9fc1ff7e3038120_kelp%20logo.png" alt="Logo">
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+              <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-end">
+                  <a class="navbar-item is-active" href="/restaurants">
+                    All Restaurants
+                  </a>
+                  <a class="navbar-item" href="/reviews/new">Write A Review
+                  </a>
+                  <a class="navbar-item" href="/restaurants/new">Add a Restaurant
+                 
+                  </a>
+    
+                  <!-- Nav bar for login  -->
+                  
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </section>
+
+
+     
+    <h1>Write a review for <%= restaurant.name %></h1>
     <main>
+        <div class="row">
         <form action="/restaurants/<%= restaurant._id %> " method="POST">
-            <p>
-                <input type="text" name="author" placeholder="Your Name" >
-            </p>
-            <p>
-                <textarea type="text" name="review" placeholder="Your review here"></textarea>
-            </p>
-            <p>
-            
-            </p>
-            <input type="submit" value="Submit Review">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input class="validate" type="text" name="author" />
+                    <label class="active" for="author">Name</label>
+              </div>
+                <div class="input-field col s6">
+                    <input class="validate" type="text" name="review" />
+                    <label class="active" for="review">Review</label>
+                </div>
+            <input class="waves-effect waves-light btn" type="submit" value="Submit Review">
         </form>
+    </div>
     </main>
 </body>
 </html>
