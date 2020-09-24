@@ -73,7 +73,7 @@ router.get("/:id/new", (req,res) => {
     });
 });
 
-//Show Route ?
+//Show Route
 router.get("/:id", (req, res) => {
     db.Review.findById(req.params.id, (error, foundReview) => {
         if (error) {
