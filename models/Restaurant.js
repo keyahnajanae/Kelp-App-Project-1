@@ -11,7 +11,7 @@ const restaurantSchema = new mongoose.Schema(
         delivery: Boolean,
         takeOut: Boolean,
         dineIn: Boolean,
-        image: { type: String, required: false },
+        image: [{ type: String, required: false }],
         review: [
             { 
                 type: mongoose.Schema.Types.ObjectId,
