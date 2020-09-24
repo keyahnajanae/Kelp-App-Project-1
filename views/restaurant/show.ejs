@@ -21,7 +21,13 @@
         <h2>Reviews</h2>
         <ul>
             <% restaurant.review.forEach(review => { %>
-            <li><%= review.author %> </li>
+            <li><%= review.author %> 
+            <% if(review.recommend == true) { %>
+                recommends this restaurant.
+            <% } else { %>
+                does not recommend this restaurant.
+            <% } %>
+        </li>
             <p><%= review.review %></p>
         <% }) %> 
         </ul>

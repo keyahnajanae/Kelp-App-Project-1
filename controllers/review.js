@@ -61,6 +61,11 @@ router.post("/", async (req, res) =>{
 
 // Specific restaurant new review route
 router.get("/:id/new", (req,res) => {
+    if(req.body.recommend === "on"){
+        req.body.recommend = true
+    } else {
+        req.body.recommend = false;
+    }
     db.Restaurant.findById(req.params.id, (error, foundRestaurant) => {
         if (error) {
             console.log(error);
