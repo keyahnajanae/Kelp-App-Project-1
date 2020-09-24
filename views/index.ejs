@@ -97,7 +97,7 @@
         <div class="col s8 m4">
           <div class="card">
             <div class="card-image"> <!--  TODO change image src to restaurant.image -->
-              <img src= "<%= restaurant.image %> >"
+              <img src="<%= restaurant.image %>">
               <span class="card-title"><%= restaurant.name %></span>
               <a class="btn turqoise"><i class="material-icons">Write A Review</i></a>
           </div>
@@ -137,23 +137,11 @@
       >
   
     </section>
-    
-  
 </div>
     </div>
   </div>
 </div>
-        <ul>
-        <% restaurants.forEach(restaurant => { %>
-<li>
-    <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %> </a>
-</li>
-<li>
-    <a href="/restaurants/<%= restaurant._id %>/newreview">Write a review</a>
-</li>
 
-      <%  }) %> 
-    </ul>
 
 <!-- Add a footer -->
 </body>
