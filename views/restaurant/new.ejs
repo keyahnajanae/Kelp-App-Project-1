@@ -45,10 +45,19 @@
           </nav>
         </div>
       
-        <h1 class="new-restaurant">New Restaurant</h1>
+
         <div class="row">
-          
+            <h1 class="new-restaurant">New Restaurant</h1>
     <form class="col s12" action="/restaurants" method="POST">
+        <div class="file-field input-field">
+            <div class="btn">
+              <span>Image</span>
+              <input type="file" multiple>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Upload one or more files">
+            </div>
+          </div>
         <div class="input-field inline col s6">
         <input class="validate" type="text" name="name" />
         <label class="active" for="name">Name</label>
@@ -65,9 +74,11 @@
       <input class="validate" type="text" name="businessHours" />
         <label class="active" for="businessHours">Business Hours</label>
     </div>
-
+    
+   
+  
+<div class="row">
     <div class="input-field inline col s6">
-       
         <label id="delivery-checkbox">
             <input class="validate" type="checkbox" name="delivery" id="delivery-checkbox" type="checkbox" />
             <span>Delivery Options? </span>
@@ -87,11 +98,15 @@
       </label>
 
     </div>
+    </div>
   
-
+<div class="row">
+    <div class="input-field inline col s6">
         <input class="waves-effect waves-light btn" type="submit" value="New Restaurant" />
-       
+    </div>
+    </div>
     </form>
+</form>
 </div>
 </body>
 </html>

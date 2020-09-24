@@ -50,9 +50,9 @@ router.post('/', (req, res)=>{
     req.body.user = req.session.currentUser.id //adds current user id to user field in created restaurant
     console.log(req.body)
     db.Restaurant.create(req.body, (error, createdRestaurant)=>{
-        if (!createdRestaurant) {
+       /*  if (!createdRestaurant) {
             return res.send({message: "Restaurant already exists"})
-        } // TODO make functionality to not let restaurants be duplicated to db
+        }  */// TODO make functionality to not let restaurants be duplicated to db
         res.redirect('/restaurants'); 
     });
 });
