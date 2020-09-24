@@ -46,7 +46,7 @@
         </section>
     
     <h1><%= restaurant.name %></h1> 
-    <img src=<%= restaurant.image %>>
+    <img src="<%= restaurant.image %>">
     <br>
     <a class="waves-effect waves-light btn" href="/restaurants/<%= restaurant._id %>/edit">Edit Restaurant</a>
 
@@ -65,7 +65,13 @@
         <h2>Reviews</h2>
         <ul>
             <% restaurant.review.forEach(review => { %>
-            <li><%= review.author %> </li>
+            <li><%= review.author %> 
+            <% if(review.recommend == true) { %>
+                recommends this restaurant.
+            <% } else { %>
+                does not recommend this restaurant.
+            <% } %>
+        </li>
             <p><%= review.review %></p>
         <% }) %> 
         </ul>

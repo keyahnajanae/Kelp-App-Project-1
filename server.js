@@ -43,11 +43,23 @@ const authRequired = (req, res, next) => {
 //Routes
 
 //index route
-app.get("/", function(req, res) {
+/* app.get("/", function(req, res) {
     res.render("index.ejs", {user: req.session.currentUser })
-})
+}) */
 
-
+app.get("/", async (req, res) => {
+    try {
+        const foundRestaurants = await db.Restaurant.find({});
+        const context = {
+            restaurants: foundRestaurants,
+            user: req.session.currentUser,
+        }
+        res.render("index.ejs", context)
+    } catch (error) {
+        console.log(error)
+        res.send({message: "Internal Error"})
+    }
+    })
 
 
 //Controller routes
@@ -56,6 +68,7 @@ app.use("/restaurants", controllers.restaurant)
 app.use("/reviews", controllers.review)
 
 app.use("/", controllers.auth)
+
 
 
 //server listener
