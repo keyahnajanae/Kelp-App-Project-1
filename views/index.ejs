@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Kelp Home Page</title>
+</head>
+<body>
+
+    <section class="hero is-primary is-medium">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+          <nav class="navbar">
+            <div class="container">
+              <div class="navbar-brand">
+                <a href="/" class="navbar-item">
+                  <img src="https://uploads-ssl.webflow.com/5be7bc39ea60003da6a932e0/5be8c37ac9fc1ff7e3038120_kelp%20logo.png" alt="Logo">
+                </a>
+                <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+              <div id="navbarMenuHeroA" class="navbar-menu">
+                <div class="navbar-end">
+                  <a class="navbar-item is-active" href="/restaurants">
+                    All Restaurants
+                  </a>
+            
+                  <a class="navbar-item" href="/restaurants/new">Add a Restaurant
+                 
+                  </a>
+
+                  <!-- Nav bar for login  -->
+                  <span class="nav-bar">
+                  <% if(user) { %>
+                    <p>Welcome, <%= user.username %></p>
+                    <span class="navbar-item">
+                          <span class="icon">
+                            <form class="button is-primary is-inverted" action="/logout?_method=DELETE" method="POST">
+                                <input id="logout-button" class="button is-primary is-inverted" type="submit" value="Logout">
+                              </form>
+                          </span>
+                  <% } else { %> 
+                    <span class="navbar-item">
+                        <a href="/login"class="button is-primary is-inverted">
+                          <span class="icon">
+                            
+                          </span>
+                          <span>Login</span>
+                        </a>
+                      </span> <span class="navbar-item">
+                        <a href="/register" class="button is-primary is-inverted">
+                          <span class="icon">
+                            
+                          </span>
+                          <span>Register</span>
+                        </a>
+                      </span>
+                    
+                          
+                        </a>
+                      </span>
+                  <% } %>
+                </span>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title">
+             Kelp
+            </h1>
+            <h2 class="subtitle">
+              Find Good Eats
+            </h2>
+          </div>
+        </div>
+      
+
+          </nav>
+        </div>
+      </section>
+    <div class="second-restaruant">  
+        <div class="row">
+        <% restaurants.forEach(restaurant => { %>
+            <div class="col s8 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="/restaurants/<%= restaurant._id %>">
+                        <img src="<%= restaurant.image %>">
+                        </a>
+                        <a href="/restaurants/<%= restaurant._id %>/newreview">
+                        <span class="card-title"><%= restaurant.name %></span>
+                        <a class="btn turqoise" href="/restaurants/<%= restaurant._id %>/newreview"><i class="material-icons">Write A Review</i></a>
+                        </a>    
+                    </div>
+                    <div class="card-content">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        <%  }); %>
+        </div>
+    </div>
+
+<!-- Add a footer -->
+</body>
+</html>
