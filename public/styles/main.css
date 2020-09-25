@@ -3,3 +3,19 @@ body {
     
 }
 
+.ind-review-loop {
+    font-size: 20px;
+    font-weight: 10;
+}
+
+#review-review {
+    display: -webkit-inline-box;
+    max-width: 40%;
+    min-width: 0;
+    height: auto;
+}
+
+#restaurant-image {
+    max-width: 60%;
+    height: auto;
+}
