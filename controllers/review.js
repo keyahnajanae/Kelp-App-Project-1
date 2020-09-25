@@ -44,7 +44,8 @@ router.post("/", async (req, res) =>{
         } 
         const createdReview = await db.Review.create(req.body);
         const foundRestaurant = await db.Restaurant.findById(req.body.restaurant);
-        foundRestaurant.review.push(createdReview);
+    
+        await foundRestaurant.review.push(createdReview);
         await foundRestaurant.save();
         console.log(createdReview)
         console.log(foundRestaurant)

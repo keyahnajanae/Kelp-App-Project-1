@@ -3,60 +3,20 @@ body {
     
 }
 
-.center-kelp-home-button {
-    text-align: center;
+.ind-review-loop {
+    font-size: 20px;
+    font-weight: 10;
 }
 
-
-.header-nav_item {
-    list-style-type: none;
-    display: inline-block;
-  
-   
+#review-review {
+    padding-bottom: 20px;
+    display: -webkit-inline-box;
+    max-width: 40%;
+    min-width: 0;
+    height: auto;
 }
 
-.login-header-nav {
-    text-align: right;
-    
-   
+#restaurant-image {
+    max-width: 60%;
+    height: auto;
 }
-
-.register-kelp {
-  color: grey;
-  
-}
-
-/* label color */
-.input-field label {
-  color: whitesmoke;
-}
-/* label focus color */
-.input-field {
-  color:whitesmoke;
-}
-/* label underline focus color */
-.input-field input[type=text]:focus {
-  border-bottom: 1px solid #000;
-  box-shadow: 0 1px 0 0 #000;
-}
-/* valid color */
-.input-field input[type=text].valid {
-  border-bottom: 1px solid #000;
-  box-shadow: 0 1px 0 0 #000;
-}
-/* invalid color */
-.input-field input[type=checkbox].invalid {
-  border-bottom: 1px solid #000;
-  box-shadow: 0 1px 0 0 #000;
-  color: white;
-}
-/* icon prefix focus color */
-.input-field .prefix.active {
-  color: #000;
-}
-
-.card-location {
-    font-size: 14px;
-    font-weight: bold;
-}
-

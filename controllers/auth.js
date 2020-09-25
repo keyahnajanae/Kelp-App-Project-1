@@ -35,6 +35,7 @@ router.post("/register", async (req, res) => {
 router.get("/login", (req, res) => {
     res.render("auth/login")
 });
+//login post
 
 router.post("/login", async (req, res) => {
     try {
@@ -57,7 +58,7 @@ router.post("/login", async (req, res) => {
     }
 })
 
-//logout
+//logout 
 
 router.delete("/logout", async (req, res) =>{
     await req.session.destroy();

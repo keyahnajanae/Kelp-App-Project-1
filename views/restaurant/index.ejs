@@ -31,7 +31,7 @@
               <a class="navbar-item is-active" href="/restaurants">
                 All Restaurants
               </a>
-              <a class="navbar-item" href="/reviews/new">Write A Review
+              <a class="navbar-item" href="/">Home
               </a>
               <a class="navbar-item" href="/restaurants/new">Add a Restaurant
              
@@ -43,7 +43,36 @@
           </div>
         </div>
       </nav>
+<<<<<<< HEAD
 </div>
+=======
+    </div>
+  </section>
+
+  <div class="second-restaruant">  
+    <div class="row">
+    <% restaurants.forEach(restaurant => { %>
+        <div class="col s8 m4">
+            <div class="card">
+                <div class="card-image">
+                    <a href="/restaurants/<%= restaurant._id %>">
+                    <img src="<%= restaurant.image %>">
+                    </a>
+                    <a href="/restaurants/<%= restaurant._id %>/newreview">
+                    <span class="card-title"><%= restaurant.name %></span>
+                    <a class="btn turqoise" href="/restaurants/<%= restaurant._id %>/newreview"><i class="material-icons">Write A Review</i></a>
+                    </a>    
+                </div>
+                <div class="card-content">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    <%  }); %>
+    </div>
+</div>
+
+>>>>>>> development
 
 </body>
 </html>
