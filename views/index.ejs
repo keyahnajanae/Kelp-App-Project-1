@@ -92,29 +92,28 @@
           </nav>
         </div>
       </section>
+      <section>
       <% restaurants.forEach(restaurant => { %>
-      <div class="row">
-        <div class="col s8 m4">
-          <div class="card">
-            <div class="card-image">
-             <a href="/restaurants/<%= restaurant._id %>">
-              <img src="<%= restaurant.image %>">
-              </a>
-              <a href="/restaurants/<%= restaurant._id %>/newreview">
-              <span class="card-title"><%= restaurant.name %></span>
-              <a class="btn turqoise" href="/restaurants/<%= restaurant._id %>/newreview"><i class="material-icons"></i>Write A Review</i></a>
-              <span class="card-location"><%= restaurant.location %></span>
-              </a>
-            </div>
-            <div class="card-content">
-                <%= restaurant.description %> 
+          <div class="col s8 m4">
+            <div class="card">
+              <div class="card-image">
+               <a href="/restaurants/<%= restaurant._id %>">
+                    <img src="<%= restaurant.image %>">
+               </a>
+               <a href="/restaurants/<%= restaurant._id %>/newreview">
+                    <span class="card-title"><%= restaurant.name %></span>
+               </a>
+               <a class="btn turqoise" href="/restaurants/<%= restaurant._id %>/newreview"><i class="material-icons"></i>Write A Review</i></a>
+                <span class="card-location"><%= restaurant.location %></span>
+              </div>
+              <div class="card-content">
+                  <%= restaurant.description %> 
+              </div>
             </div>
           </div>
-      </div>
-      <%  }) %> 
-  
-    </section>
-</div>
+          <%  }) %> 
+        </section> 
+</div>        
     </div>
   </div>
 </div>
