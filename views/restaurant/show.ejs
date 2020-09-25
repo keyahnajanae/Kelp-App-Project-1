@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="public/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="/scripts/app.js"></script>
@@ -30,13 +30,13 @@
                   <a class="navbar-item is-active" href="/restaurants">
                     All Restaurants
                   </a>
-                  <a class="navbar-item" href="/reviews/new">Write A Review
+                  <a class="navbar-item" href="/">Home
                   </a>
                   <a class="navbar-item" href="/restaurants/new">Add a Restaurant
                  
                   </a>
 
-                  <!-- Nav bar for login  -->
+            
                   
                 </div>
               </div>
@@ -46,38 +46,70 @@
         </section>
     
     <h1><%= restaurant.name %></h1> 
+    <a class="waves-effect waves-light btn" href="/restaurants/<%= restaurant._id %>/edit">Edit Restaurant</a>
+    <div class="input-field inline col s6">
+
+    <div class="write-review-btn">  <a class="waves-effect waves-light btn" href="/restaurants/<%= restaurant._id %>/newreview">Write a Review</a></div>
+  </div>
+    <br>
     <img src="<%= restaurant.image %>">
     <br>
-    <a class="waves-effect waves-light btn" href="/restaurants/<%= restaurant._id %>/edit">Edit Restaurant</a>
+   
 
     <h3><%= restaurant.location %></h3>
     <h4><%= restaurant.address %> </h4>
   
+
+    <% if(!restaurant.businessHours){ %>
+     <p>Business Hours Unavailable</p>
+    <% } else { %>
     <p>Business Hours: <%= restaurant.businessHours %></p>
+    <% } %>
+     
+    
 
+<% if(restaurant.delivery == true){ %>
+  <a class="waves-effect waves-light btn pulse"><i class="material-icons">Delivery Available</i></a>
+<% } %>
 
+<% if(restaurant.takeOut == true){ %>
+  <a class="waves-effect waves-light btn pulse"><i class="material-icons">Take Out Available</i></a>
+<% } %>
 
+<% if(restaurant.dineIn == true){ %>
+  <a class="waves-effect waves-light btn pulse"><i class="material-icons">Dine In Options</i></a>
 
+<% } %>
+
+    
+   
   
-    
-    
-    <section>
+  
+    <div class="row">
+    <div class="review-grid col 12">
+   
         <h2>Reviews</h2>
-        <ul>
+        <p>
+          <span class="flow-text">
+        <ul class="review-loop">
             <% restaurant.review.forEach(review => { %>
-            <li><%= review.author %> 
+              <strong>
+            <li class="ind-review-loop"><%= review.author %> 
             <% if(review.recommend == true) { %>
                 recommends this restaurant.
             <% } else { %>
                 does not recommend this restaurant.
             <% } %>
         </li>
-            <p><%= review.review %></p>
+      </strong>
+    </span>
+            <p id="review-review"> Review: <%= review.review %></p>
         <% }) %> 
         </ul>
-    </section>
-
-<div class="write-review-btn">  <a class="waves-effect waves-light btn" href="/restaurants/<%= restaurant._id %>/newreview">Write a Review</a></div>
+      </p>
+   
+  </div>
+  </div>
 </body>
 </html>
 
