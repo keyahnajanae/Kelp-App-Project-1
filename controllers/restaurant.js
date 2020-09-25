@@ -3,11 +3,8 @@ const { restaurant } = require(".");
 const router = express.Router();
 
 const db = require("../models");
-//const { User } = require("../models");
 
-//this controller 
-
-//base routes
+// base route is /restaurants
 
 //All restaurant page
 router.get("/", async (req, res) => {

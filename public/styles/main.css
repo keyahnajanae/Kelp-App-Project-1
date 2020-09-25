@@ -9,6 +9,7 @@ body {
 }
 
 #review-review {
+    padding-bottom: 20px;
     display: -webkit-inline-box;
     max-width: 40%;
     min-width: 0;
