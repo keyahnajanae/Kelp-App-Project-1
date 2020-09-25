@@ -103,7 +103,7 @@ router.post("/:id", async (req, res) =>{
         const createdReview = await db.Review.create(req.body);
         const foundRestaurant = await db.Restaurant.findById(req.body.restaurant);
     
-        foundRestaurant.review.push(createdReview);
+        foundRestaurant.review.unshift(createdReview);
         await foundRestaurant.save();
 
         res.redirect("/restaurants");

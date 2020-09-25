@@ -46,28 +46,28 @@
     </div>
   </section>
 
-
-    <main>
-    <h1>All Restaurants</h1>
-
-    <ul>
-        <% restaurants.forEach(restaurant => { %>
-<li>
-    <a href="/restaurants/<%= restaurant._id %>"><%= restaurant.name %> </a>
-</li>
-<li>
-    <a href="/restaurants/<%= restaurant._id %>/newreview">Write a review</a>
-</li>
-
-      <%  }) %> 
-    </ul>
-
-    <% if(restaurants.length === 0) { %>
-        <p>There are no restaruants available yet.</p>
-        <% } %>
-    </main>
-   
-
+  <div class="second-restaruant">  
+    <div class="row">
+    <% restaurants.forEach(restaurant => { %>
+        <div class="col s8 m4">
+            <div class="card">
+                <div class="card-image">
+                    <a href="/restaurants/<%= restaurant._id %>">
+                    <img src="<%= restaurant.image %>">
+                    </a>
+                    <a href="/restaurants/<%= restaurant._id %>/newreview">
+                    <span class="card-title"><%= restaurant.name %></span>
+                    <a class="btn turqoise" href="/restaurants/<%= restaurant._id %>/newreview"><i class="material-icons">Write A Review</i></a>
+                    </a>    
+                </div>
+                <div class="card-content">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    <%  }); %>
+    </div>
+</div>
 
 
 </body>
