@@ -4,7 +4,7 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session)
 const path = require("path");
-
+require("dotenv").config()
 // Instanced modules
 const app = express();
 // configuration
@@ -24,9 +24,9 @@ app.use(methodOverride("_method"));
 app.use(session({
     resave: false,
     saveUninitialized: false,
-    secret: "Rainbows",
+    secret: process.env.SECRET,
     store: new MongoStore({
-        url:"mongodb://localhost:27017/restaurant-session",
+        url: process.env.MONGODB_URI || "mongodb://localhost:27017/restaurant-session",
     }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7
@@ -72,7 +72,7 @@ app.use("/", controllers.auth)
 
 
 //server listener
-app.listen(PORT,  () =>  {
+app.listen(process.env.PORT || 4000,  () =>  {
     console.log(`Listening to ${PORT}`)
 })
 
