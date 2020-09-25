@@ -97,44 +97,21 @@
         <div class="col s8 m4">
           <div class="card">
             <div class="card-image">
+             <a href="/restaurants/<%= restaurant._id %>">
               <img src="<%= restaurant.image %>">
+              </a>
+              <a href="/restaurants/<%= restaurant._id %>/newreview">
               <span class="card-title"><%= restaurant.name %></span>
-              <a class="btn turqoise" href="/restaurants/<%= restaurant._id %>/newreview">Write A Review</i></a>
-          </div>
+              <a class="btn turqoise" href="/restaurants/<%= restaurant._id %>/newreview"><i class="material-icons"></i>Write A Review</i></a>
+              <span class="card-location"><%= restaurant.location %></span>
+              </a>
+            </div>
             <div class="card-content">
-              <p>Review Text</p>
+                <%= restaurant.description %> 
             </div>
           </div>
       </div>
       <%  }) %> 
-    <section class="second-restaruant">    
-        <div class="col s8 m4">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://media.istockphoto.com/photos/close-up-of-fresh-flame-grilled-burgers-displayed-in-a-row-at-food-picture-id914886270?k=6&m=914886270&s=612x612&w=0&h=4gUa15EQ1pIxUqJDg0A8z5do1pDpHeETfm8GvaxjDF4=">
-              <span class="card-title">Restaurant Name</span>
-              <a class="btn turqoise"><i class="material-icons">Write A Review</i></a>
-            </div>
-            <div class="card-content">
-              <p>Review Text</p>
-            </div>
-          </div>
-      </div>
-    </section>     
-    <section class="third-restaruant">      
-        <div class="col s8 m4">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://media.istockphoto.com/photos/close-up-of-fresh-flame-grilled-burgers-displayed-in-a-row-at-food-picture-id914886270?k=6&m=914886270&s=612x612&w=0&h=4gUa15EQ1pIxUqJDg0A8z5do1pDpHeETfm8GvaxjDF4=">
-              <span class="card-title">Restaurant Name</span>
-              <a class="btn turqoise"><i class="material-icons">Write A Review</i></a>
-            </div>
-            <div class="card-content">
-              <p>Review Text</p>
-            </div>
-          </div>
-      </div
-      >
   
     </section>
 </div>

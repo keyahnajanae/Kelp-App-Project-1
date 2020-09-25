@@ -8,6 +8,7 @@ const restaurantSchema = new mongoose.Schema(
         location: { type: String, required: false },
         address: { type: String, required: false, unique: true },
         businessHours: { type: String, required: false },
+        description: { type: String, required: false },
         delivery: Boolean,
         takeOut: Boolean,
         dineIn: Boolean,
