@@ -44,11 +44,11 @@ router.post("/", async (req, res) =>{
             req.body.recommend = true
         } else {
             req.body.recommend = false;
-        }
+        } 
         const createdReview = await db.Review.create(req.body);
         const foundRestaurant = await db.Restaurant.findById(req.body.restaurant);
     
-        foundRestaurant.review.push(createdReview);
+        await foundRestaurant.review.push(createdReview);
         await foundRestaurant.save();
     
         res.redirect("/restaurants");

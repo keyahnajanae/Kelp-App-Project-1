@@ -30,7 +30,7 @@ router.get("/new", (req, res) => {
 })
 
 
-//create route - TODO add images and connection to reviews
+//create route 
 router.post('/', (req, res)=>{
     if(req.body.delivery === 'on') {
         req.body.delivery = true;
@@ -105,7 +105,7 @@ router.post("/:id", async (req, res) =>{
     
         foundRestaurant.review.push(createdReview);
         await foundRestaurant.save();
-    
+
         res.redirect("/restaurants");
       } catch (error) {
         console.log(error);
