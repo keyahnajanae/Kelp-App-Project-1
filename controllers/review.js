@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require("../models")
 
 
-/* Base Routes */
+// base route is /reviews
 
 //Index Route
 
