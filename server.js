@@ -8,7 +8,7 @@ const path = require("path");
 // Instanced modules
 const app = express();
 // configuration
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 // Internal modules
 const db = require("./models");
 app.set("view engine", "ejs")
@@ -72,7 +72,7 @@ app.use("/", controllers.auth)
 
 
 //server listener
-app.listen(PORT, function () {
-    console.log(`Live and listening at http://localhost:${PORT}`)
+app.listen(PORT,  () =>  {
+    console.log(`Listening to ${PORT}`)
 })
 

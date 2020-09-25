@@ -1,7 +1,7 @@
 // hub for models and db connection
 const mongoose = require('mongoose');
 
-const connectionString = 'mongodb://localhost:27017/restaurants-db';
+const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017/restaurants-db';
 
 mongoose.connect(connectionString, {
     useNewUrlParser: true,
