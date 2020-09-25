@@ -14,7 +14,6 @@ router.get("/", async (req, res) => {
         const foundReview = await db.Review.find({});
         const context = {
             review: foundReview,
-
         }
         res.render("review/index", context)
     } catch (error) {
@@ -27,11 +26,9 @@ router.get("/", async (req, res) => {
 router.get("/new", (req, res) => {
     db.Restaurant.find({}, function (error, foundRestaurants) {
         if (error) return res.send(error);
-
         const context = {
             restaurants: foundRestaurants,
         };
-
         res.render("review/new", context)
     })
 })
@@ -50,7 +47,8 @@ router.post("/", async (req, res) =>{
     
         await foundRestaurant.review.push(createdReview);
         await foundRestaurant.save();
-    
+        console.log(createdReview)
+        console.log(foundRestaurant)
         res.redirect("/restaurants");
       } catch (error) {
         console.log(error);
@@ -61,11 +59,6 @@ router.post("/", async (req, res) =>{
 
 // Specific restaurant new review route
 router.get("/:id/new", (req,res) => {
-    if(req.body.recommend === "on"){
-        req.body.recommend = true
-    } else {
-        req.body.recommend = false;
-    }
     db.Restaurant.findById(req.params.id, (error, foundRestaurant) => {
         if (error) {
             console.log(error);
@@ -78,7 +71,7 @@ router.get("/:id/new", (req,res) => {
     });
 });
 
-//Show Route
+//Show Route ?
 router.get("/:id", (req, res) => {
     db.Review.findById(req.params.id, (error, foundReview) => {
         if (error) {

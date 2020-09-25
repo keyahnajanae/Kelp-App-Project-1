@@ -44,12 +44,9 @@ router.post('/', (req, res)=>{
     } else {
         req.body.dineIn = false;
     }
-    req.body.user = req.session.currentUser.id //adds current user id to user field in created restaurant
+    req.body.user = req.session.currentUser.id
     console.log(req.body)
     db.Restaurant.create(req.body, (error, createdRestaurant)=>{
-       /*  if (!createdRestaurant) {
-            return res.send({message: "Restaurant already exists"})
-        }  */// TODO make functionality to not let restaurants be duplicated to db
         res.redirect('/restaurants'); 
     });
 });
@@ -135,7 +132,6 @@ router.get("/:id/edit", async (req, res) =>{
 //update route
 
 router.put("/:id", async (req, res) =>{
-    //console.log(req.session.currentUser.id)
     if(req.body.delivery === 'on') {
         req.body.delivery = true;
     } else {
@@ -153,7 +149,6 @@ router.put("/:id", async (req, res) =>{
     }
     try {
         const updatedRestaurant = await db.Restaurant.findByIdAndUpdate(req.params.id, req.body, {new: true})
-        console.log(req.body)
         res.redirect(`/restaurants/${updatedRestaurant._id}`)
     } catch (error) {
         console.log(error);
