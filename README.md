@@ -28,5 +28,5 @@ This is a restaurant review and information website for foodies
 
 ## Contact
 - [Andrew Spivey](https://github.com/andrewjspivey)
-- 
-- 
+- [Keyahna Blanford](https://py-portfolio.herokuapp.com)
+
